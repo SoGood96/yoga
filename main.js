@@ -1,5 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(){
     'use strict';
+
+//Tabs
     let tab = document.querySelectorAll('.info-header-tab'),
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
@@ -32,8 +34,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     });
 
-    //Timer
-
+//Timer
     let deadline = '2019-09-24';
 
     function getTimeRemaining(endtime) {
@@ -71,6 +72,32 @@ window.addEventListener('DOMContentLoaded', function(){
         }
 
     }
-
     setClock ('timer', deadline);
+
+//modal
+
+let more = document.querySelector('.more'),
+    overlay = document.querySelector('.overlay'),
+    close = document.querySelector('.popup-close'),
+    description = document.querySelectorAll('.description-btn');
+    
+more.addEventListener('click', function() {
+    overlay.style.display = 'block';
+    this.classList.add('more-splash');//добавление класса с анимацией
+    document.body.style.overflow = "hidden";
+})
+
+close.addEventListener ('click', function(){
+    overlay.style.display = 'none';
+    more.classList.remove('more-splash');
+})
+
+for (let a = 0; a < description.length; a++) {
+    description[a].addEventListener('click', function(){
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');//добавление класса с анимацией
+        document.body.style.overflow = "hidden";
+    })
+}
+
 });
